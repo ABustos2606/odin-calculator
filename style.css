@@ -34,11 +34,11 @@ main {
     padding:5px
 }
 
-.superior {
+#superior {
     font-size: 12px;
 }
 
-.lastinput {
+#lastinput {
     font-size: 24px;
 }
 
@@ -68,6 +68,6 @@ main {
     background-color: #c7b198;
 }
 
-#zero, #backspace {
+.zero {
     flex: 2;
 }
