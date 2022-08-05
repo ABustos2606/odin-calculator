@@ -1,5 +1,5 @@
 let value1 = "";
-let value2 = 0;
+let value2 = "";
 let operator = "";
 let operatorIsActive = false;
 let calcButtons = document.querySelectorAll('button');
@@ -172,6 +172,9 @@ function collectData(e) {
             operatorIsActive = true;
             break;
         case 'power':
+            if (value2.length === 0 == false) {
+                value1 = equal();
+            }
             value2 = value1;
             operator = "power"
             document.getElementById("superior").textContent = value2+" ^";
@@ -195,6 +198,9 @@ function collectData(e) {
             break;
         case 'sum':
         case '+':
+            if (value2.length === 0 == false) {
+                value1 = equal();
+            }
             value2 = value1;
             operator = "sum"
             document.getElementById("superior").textContent = value2+" +";
@@ -202,6 +208,9 @@ function collectData(e) {
             break;
         case 'subtract':
         case '-':
+            if (value2.length === 0 == false) {
+                value1 = equal();
+            }
             value2 = value1;
             operator = "subtract"
             document.getElementById("superior").textContent = value2+" -";
@@ -209,6 +218,9 @@ function collectData(e) {
             break;
         case 'multiply':
         case '*':
+            if (value2.length === 0 == false) {
+                value1 = equal();
+            }
             value2 = value1;
             operator = "multiply"
             document.getElementById("superior").textContent = value2+" *";
@@ -216,6 +228,9 @@ function collectData(e) {
             break;
         case 'division':
         case '/':
+            if (value2.length === 0 == false) {
+                value1 = equal();
+            }
             value2 = value1;
             operator = "division"
             document.getElementById("superior").textContent = value2+" /";
