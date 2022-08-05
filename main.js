@@ -64,7 +64,7 @@ function collectData(e) {
     }
     switch(data) {
         case '0':
-            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true)){
+            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true) && value1.length < 16){
                 value1 = value1 + '0';
             } else if (value1 == 0 || operatorIsActive == true) {
                 value1 = '0'
@@ -72,7 +72,7 @@ function collectData(e) {
             }
             break;
         case '9':
-            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true)){
+            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true) && value1.length < 16){
                 value1 = value1 + '9';
             } else if (value1 == 0 || operatorIsActive == true) {
                 value1 = '9'
@@ -80,7 +80,7 @@ function collectData(e) {
             }
             break;
         case '8':
-            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true)){
+            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true) && value1.length < 16){
                 value1 = value1 + '8';
             } else if (value1 == 0 || operatorIsActive == true) {
                 value1 = '8'
@@ -88,7 +88,7 @@ function collectData(e) {
             }
             break;
         case '7':
-            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true)){
+            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true) && value1.length < 16){
                 value1 = value1 + '7';
             } else if (value1 == 0 || operatorIsActive == true) {
                 value1 = '7'
@@ -96,7 +96,7 @@ function collectData(e) {
             }
             break;
         case '6':
-            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true)){
+            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true) && value1.length < 16){
                 value1 = value1 + '6';
             } else if (value1 == 0 || operatorIsActive == true) {
                 value1 = '6'
@@ -104,7 +104,7 @@ function collectData(e) {
             }
             break;
         case '5':
-            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true)){
+            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true) && value1.length < 16){
                 value1 = value1 + '5';
             } else if (value1 == 0 || operatorIsActive == true) {
                 value1 = '5'
@@ -112,7 +112,7 @@ function collectData(e) {
             }
             break;
         case '4':
-            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true)){
+            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true) && value1.length < 16){
                 value1 = value1 + '4';
             } else if (value1 == 0 || operatorIsActive == true) {
                 value1 = '4'
@@ -120,7 +120,7 @@ function collectData(e) {
             }
             break;
         case '3':
-            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true)){
+            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true) && value1.length < 16){
                 value1 = value1 + '3';
             } else if (value1 == 0 || operatorIsActive == true) {
                 value1 = '3'
@@ -128,7 +128,7 @@ function collectData(e) {
             }
             break;
         case '2':
-            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true)){
+            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true) && value1.length < 16){
                 value1 = value1 + '2';
             } else if (value1 == 0 || operatorIsActive == true) {
                 value1 = '2'
@@ -136,7 +136,7 @@ function collectData(e) {
             }
             break;
         case '1':
-            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true)){
+            if (operatorIsActive == false && (value1 != 0 || value1.includes('.') == true) && value1.length < 16){
                 value1 = value1 + '1';
             } else if (value1 == 0 || operatorIsActive == true) {
                 value1 = '1'
@@ -152,6 +152,8 @@ function collectData(e) {
             }
             break;
         case 'clear':
+        case 'Escape':
+        case 'Delete':
             value1 = '0';
             document.getElementById("superior").textContent = "\xa0";
             break;
@@ -225,6 +227,11 @@ function collectData(e) {
             value2 = '';
             document.getElementById("superior").textContent = "\xa0";
             operatorIsActive = true;
+            break;
+        case 'backspace':
+        case 'Backspace':
+            value1 = '0';
+            break;
         
     }
     document.getElementById("lastinput").textContent = value1;
@@ -240,7 +247,7 @@ function equal() {
         case 'multiply':
             return value2*value1;
         case 'division':
-            return value2/value1;
+            return parseFloat((value2/value1).toFixed(15));
         case 'power':
             return value2**value1;
         
