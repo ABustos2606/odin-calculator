@@ -192,15 +192,16 @@ function collectData(e) {
         case 'factorial':
             if (value2.length === 0 == false) {
                 value1 = equal();
-                value2 = value1;
-                document.getElementById("superior").textContent = value2+"!";
             }
             if (value1 < 0){
                 value1 = 'Undefined';
             } else if (value1 == 0){
                 value1 = 1;
             } else {
+                value2 = value1
                 value1 = factorial(value1);
+                console.log(value2,value1)
+                document.getElementById("superior").textContent = value2+"!";
                 operator = "factorial";
                 value2 = '';
             }
@@ -209,11 +210,11 @@ function collectData(e) {
         case 'fraction':
             if (value2.length === 0 == false) {
                 value1 = equal();
-                value2 = value1;
-                document.getElementById("superior").textContent = "1/"+value2;
             }
             if (value1 != ""){
+                value2 = value1
                 value1 = fraction(value1);
+                document.getElementById("superior").textContent = "1/"+value2;
                 operator = "fraction";
                 value2 = '';
             }
