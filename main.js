@@ -155,6 +155,7 @@ function collectData(e) {
         case 'Escape':
         case 'Delete':
             value1 = '0';
+            value2 = '';
             document.getElementById("superior").textContent = "\xa0";
             break;
         case 'pi':
@@ -166,8 +167,16 @@ function collectData(e) {
             operatorIsActive = true;
             break;
         case 'squareroot':
+            if (value2.length === 0 == false) {
+                value1 = equal();
+            }
             if (value1 != ""){
+                value2 = value1
                 value1 = squareroot(value1);
+                document.getElementById("superior").textContent = value2+" √";
+                operator = "squareroot";
+                value2 = '';
+
             }
             operatorIsActive = true;
             break;
@@ -181,18 +190,32 @@ function collectData(e) {
             operatorIsActive = true;
             break;
         case 'factorial':
+            if (value2.length === 0 == false) {
+                value1 = equal();
+                value2 = value1;
+                document.getElementById("superior").textContent = value2+"!";
+            }
             if (value1 < 0){
                 value1 = 'Undefined';
             } else if (value1 == 0){
                 value1 = 1;
             } else {
                 value1 = factorial(value1);
+                operator = "factorial";
+                value2 = '';
             }
             operatorIsActive = true;
             break;
         case 'fraction':
+            if (value2.length === 0 == false) {
+                value1 = equal();
+                value2 = value1;
+                document.getElementById("superior").textContent = "1/"+value2;
+            }
             if (value1 != ""){
                 value1 = fraction(value1);
+                operator = "fraction";
+                value2 = '';
             }
             operatorIsActive = true;
             break;
